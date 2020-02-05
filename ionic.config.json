@@ -1,0 +1,7 @@
+{
+  "name": "tanent-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+         <ion-buttons slot="end">
+             <ion-back-button defaultHref="dashboard"></ion-back-button>
+         </ion-buttons>  
+        <ion-title>
+            Groups
+        </ion-title>
+    </ion-toolbar>
+</ion-header> 
+
+
+<ion-content padding>  
+
+
+  <ion-row>
+     <ion-col>
+        <button [routerLink]="['/create-team']" class="billList-class">Create a group </button>
+    </ion-col> 
+
+    <ion-col>
+        <button [routerLink]="['/join-group']" class="billList-class">Join Group </button>
+    </ion-col>
+  </ion-row>  
+<!--   <ion-row>
+    <ion-col>
+        <button [routerLink]="['/flatemates']" class="billList-class">Issues <ion-icon ios="ios-add-circle" md="md-add-circle"     style="vertical-align: middle;line-height: 26px;"></ion-icon> </button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col>
+        <button [routerLink]="['/group-application']" class="billList-class">New Application <ion-icon ios="ios-add-circle" md="md-add-circle"     style="vertical-align: middle;line-height: 26px;"></ion-icon> </button>
+    </ion-col>
+  </ion-row> -->
+
+ <ion-searchbar type="text" debounce="500" (ionInput)="filter($event)"></ion-searchbar>
+
+
+
+<ion-card>
+  <ion-card-header>
+    <ion-card-subtitle>Groups I belong to</ion-card-subtitle>
+   <!--  <ion-card-title>Groups I belong to</ion-card-title> -->
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list> 
+ <!-- [routerLink]="['/add-member-to-team']"  [queryParams]="{teamId: teamList.teamId}" -->
+      <ion-item *ngFor="let teamList of teamListArr" (click)="joinChat(teamList)" >
+        <ion-icon name="git-merge" style="height:20px;"></ion-icon>
+        <ion-label style="font-size:14px;">{{teamList.name}}</ion-label>
+         <ion-buttons  slot="end">
+             Chat
+         </ion-buttons> 
+      </ion-item>
+      <ion-item *ngIf="teamListArr?.length == 0">
+        <ion-label style="font-size:18px;">No team avaliable.</ion-label>
+      </ion-item>
+      
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+</ion-content>
